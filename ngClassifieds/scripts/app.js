@@ -1,14 +1,21 @@
 (function () {
     'use strict';
 
-    angular.module('ngClassifieds', [])
-        .controller('TestCtrl', TestCtrl)
+    angular
+        .module('ngClassifieds', [
+        // Angular Modules
 
-    function TestCtrl () {
-        var vm = this;
-        vm.message = 'Hello World!';
+        // 3rd Party Modules
+        'ngMaterial'
+        // Custom Modules
 
-    }
+        ])
+        .config(function($mdThemingProvider){
+            $mdThemingProvider.theme('default')
+                .primaryPalette('teal')
+                .accentPalette('orange');
+        });
+
 
 
 })();
