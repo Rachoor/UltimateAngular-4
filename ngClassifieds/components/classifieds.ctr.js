@@ -5,12 +5,12 @@
         .module('ngClassifieds')
         .controller('ClassifiedsCtrl', ClassifiedsCtrl)
 
-    ClassifiedsCtrl.$inject = ['$http'];
+    ClassifiedsCtrl.$inject = ['$http', 'classifiedsFactory'];
 
-    function ClassifiedsCtrl ($http) {
+    function ClassifiedsCtrl ($http, classifiedsFactory) {
         var vm = this;
 
-        $http.get('data/classifieds.json')
+        classifiedsFactory.getClassifieds()
             .then (function (classifieds) {
                 console.log(classifieds);
                 vm.classifieds = classifieds.data;
