@@ -20,14 +20,14 @@
     </md-toolbar>
 
     <md-content class="md-padding" layout="row" layout-wrap>
-        <md-card flex="33">
-            <img src="http://images.craigslist.org/00o0o_8SZ77moxkei_300x300.jpg" alt="">
+        <md-card flex="30" ng-repeat="classified in vm.classifieds">
+            <img ng-src="{{ classified.image }}" alt="">
             <md-card-content>
                 <div class="classified-info">
-                    <h2 class="md-title">{{ vm.classified.title }}</h2>
-                    <h3>{{ vm.classified.price }}</h3>
+                    <h2 class="md-title">{{ classified.title }}</h2>
+                    <h3>{{ classified.price }}</h3>
 
-                    <p>{{ vm.classified.description }}</p>
+                    <p>{{ classified.description }}</p>
                 </div>
             </md-card-content>
         </md-card>
