@@ -14,5 +14,7 @@
             last: 'Davis'
         }
 
+        vm.message = "Hello World!!!!!!!!";
+
     }
 })();
