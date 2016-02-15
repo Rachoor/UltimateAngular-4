@@ -9,7 +9,10 @@
 
     function ClassifiedsCtrl () {
         var vm = this;
-        vm.name = 'Randy';
+        vm.name = {
+            first: 'Randy',
+            last: 'Davis'
+        }
 
     }
 })();
