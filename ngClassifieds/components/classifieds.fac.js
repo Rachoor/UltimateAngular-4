@@ -16,7 +16,7 @@
         }
 
         return {
-            getClassifieds: getClassifieds
+            getClassifieds: vm.getClassifieds
         }
     }
 })();
