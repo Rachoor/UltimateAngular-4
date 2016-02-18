@@ -41,8 +41,8 @@
                     <label for="image">Image Link</label>
                     <input type="text" ng-model="vm.classified.image" id="image">
                 </md-input-container>
-                <md-button class="md-primary" ng-click="vm.saveClassified(classified)">Save</md-button>
-                <md-button class="md-primary">Save Edit</md-button>
+                <md-button ng-if="!vm.editing" class="md-primary" ng-click="vm.saveClassified(classified)">Save</md-button>
+                <md-button ng-if="vm.editing == true" ng-click="vm.saveEdit()" class="md-primary">Save Edit</md-button>
                 <md-button class="md-warn" ng-click="vm.closeSidebar()">Cancel</md-button>
                 <pre>{{vm.classified | json }}</pre>
             </form>
@@ -77,7 +77,7 @@
                 <div class="classified-admin" ng-if="showAdmin">
                     <h3>Admin</h3>
                     <div layout="row">
-                        <md-button class="md-primary">Edit</md-button>
+                        <md-button ng-click="vm.editClassified(classified)" class="md-primary">Edit</md-button>
                         <md-button class="md-warn">Delete</md-button>
                     </div>
                 </div>

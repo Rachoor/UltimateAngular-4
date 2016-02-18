@@ -12,6 +12,9 @@
         vm.openSidebar = openSidebar;
         vm.closeSidebar = closeSidebar;
         vm.saveClassified = saveClassified;
+        vm.editClassified = editClassified;
+        vm.saveEdit = saveEdit;
+        vm.showToast = showToast;
 
         vm.contact = {
             name: "Randy Davis",
@@ -39,13 +42,30 @@
                 vm.classifieds.push(vm.classified);
                 vm.classified = {};
                 vm.closeSidebar();
-                $mdToast.show(
-                    $mdToast.simple()
-                        .content("Classified Saved")
-                        .position('top, right')
-                        .hideDelay(3000)
-                );
+                vm.showToast("Classified Saved");
             }
+        }
+
+        function editClassified (classified) {
+            vm.editing = true;
+            vm.openSidebar();
+            vm.classified = classified;
+        }
+
+        function saveEdit () {
+            vm.editing = false;
+            vm.classified = {};
+            vm.closeSidebar();
+            vm.showToast("Edit Saved");
+        }
+
+        function showToast (message) {
+            $mdToast.show(
+                $mdToast.simple()
+                    .content(message)
+                    .position('top, right')
+                    .hideDelay(3000)
+            );
         }
     }
 })();
