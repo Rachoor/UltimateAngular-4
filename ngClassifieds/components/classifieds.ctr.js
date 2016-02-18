@@ -5,14 +5,15 @@
         .module('ngClassifieds')
         .controller('ClassifiedsCtrl', ClassifiedsCtrl)
 
-    ClassifiedsCtrl.$inject = ['$http', 'classifiedsFactory', '$mdSidenav', '$mdToast'];
+    ClassifiedsCtrl.$inject = ['$http', 'classifiedsFactory', '$mdSidenav', '$mdToast', '$mdDialog'];
 
-    function ClassifiedsCtrl ($http, classifiedsFactory, $mdSidenav, $mdToast) {
+    function ClassifiedsCtrl ($http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) {
         var vm = this;
-        vm.openSidebar = openSidebar;
         vm.closeSidebar = closeSidebar;
-        vm.saveClassified = saveClassified;
+        vm.deleteClassified = deleteClassified;
         vm.editClassified = editClassified;
+        vm.openSidebar = openSidebar;
+        vm.saveClassified = saveClassified;
         vm.saveEdit = saveEdit;
         vm.showToast = showToast;
 
@@ -66,6 +67,21 @@
                     .position('top, right')
                     .hideDelay(3000)
             );
+        }
+
+        function deleteClassified (event, classified) {
+            var confirm = $mdDialog.confirm()
+                .title('Are you sure you want to delete ' + classified.title + '?')
+                .ok('Yes')
+                .cancel('No')
+                .targetEvent(event)
+            $mdDialog.show(confirm)
+                .then(function () {
+                    var index = vm.classifieds.indexOf(classified);
+                    vm.classifieds.splice(index, 1);
+                }, function () {
+
+                });
         }
     }
 })();
