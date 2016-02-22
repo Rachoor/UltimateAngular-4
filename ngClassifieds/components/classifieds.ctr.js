@@ -12,6 +12,7 @@
         vm.closeSidebar = closeSidebar;
         vm.deleteClassified = deleteClassified;
         vm.editClassified = editClassified;
+        vm.getCategories = getCategories;
         vm.openSidebar = openSidebar;
         vm.saveClassified = saveClassified;
         vm.saveEdit = saveEdit;
@@ -27,7 +28,9 @@
             .then (function (classifieds) {
                 console.log(classifieds);
                 vm.classifieds = classifieds.data;
+                vm.categories = vm.getCategories(vm.classifieds);
             })
+
 
         function openSidebar (){
             $mdSidenav('left').open();
@@ -82,6 +85,18 @@
                 }, function () {
 
                 });
+        }
+
+        function getCategories (classifieds) {
+            var categories = [];
+
+            angular.forEach(classifieds, function (item) {
+                angular.forEach(item.categories, function (category) {
+                    categories.push(category);
+                });
+            });
+
+            return _.uniq(categories);
         }
     }
 })();

@@ -1,3 +1,7 @@
 button .material-icons {
     margin-top: 7px;
 }
+
+.md-warn.clear {
+    margin-top: -20px;
+}
