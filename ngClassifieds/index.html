@@ -77,7 +77,7 @@
     <md-content class="md-padding" layout="row" layout-wrap>
         <md-card flex="30" ng-repeat="classified in vm.classifieds |
                                       filter: vm.classifiedsFilter |
-                                      filter: vm.category">
+                                      filter: vm.category" class="classified">
             <img ng-src="{{ classified.image }}" alt="">
             <md-card-content>
                 <div class="classified-info" ng-show="!showContact">
