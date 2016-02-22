@@ -19,7 +19,9 @@
             $stateProvider
                 .state('one',  {
                     url: '/stateone',
-                    template: '<h1>State One</h1>'
+                    template: '<h1>{{ vm.message }}</h1>',
+                    controller: 'stateOneCtrl',
+                    controllerAs: 'vm'
                 })
                 .state('two', {
                     url: '/statetwo',
@@ -31,11 +33,12 @@
                 });
         })
 
-        .directive("helloWorld", function () {
-            return {
-                template: "<h1>{{ vm.message }}</h1>"
-            }
-        });
+        .controller('stateOneCtrl', stateOneCtrl);
+
+        function stateOneCtrl () {
+            var vm = this;
+            vm.message = "Hey from state one";
+        }
 
 
 
