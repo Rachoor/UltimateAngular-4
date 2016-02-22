@@ -17,29 +17,13 @@
                 .accentPalette('orange');
 
             $stateProvider
-                .state('one',  {
-                    url: '/stateone',
-                    template: '<h1>{{ vm.message }}</h1>',
-                    controller: 'stateOneCtrl',
+                .state('classifieds',  {
+                    url: '/classifieds',
+                    templateUrl: 'components/classifieds/classifieds.tpl.html',
+                    controller: 'ClassifiedsCtrl',
                     controllerAs: 'vm'
                 })
-                .state('two', {
-                    url: '/statetwo',
-                    template: '<h1>State Two</h1> <md-button ui-sref="two.more">Go To Nested State</md-button><ui-view></ui-view>'
-                })
-                .state('two.more', {
-                    url: '/more',
-                    template: '<h1>Nested State Two.More</h1>'
-                });
         })
-
-        .controller('stateOneCtrl', stateOneCtrl);
-
-        function stateOneCtrl () {
-            var vm = this;
-            vm.message = "Hey from state one";
-        }
-
 
 
 })();

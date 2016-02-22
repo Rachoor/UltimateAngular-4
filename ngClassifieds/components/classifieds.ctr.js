@@ -9,14 +9,20 @@
 
     function ClassifiedsCtrl ($http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) {
         var vm = this;
+
+        vm.categories;
+        vm.classified;
+        vm.classifieds;
         vm.closeSidebar = closeSidebar;
         vm.deleteClassified = deleteClassified;
         vm.editClassified = editClassified;
+        vm.editing;
         vm.getCategories = getCategories;
         vm.openSidebar = openSidebar;
         vm.saveClassified = saveClassified;
         vm.saveEdit = saveEdit;
         vm.showToast = showToast;
+
 
         vm.contact = {
             name: "Randy Davis",
@@ -28,7 +34,7 @@
             .then (function (classifieds) {
                 console.log(classifieds);
                 vm.classifieds = classifieds.data;
-                vm.categories = vm.getCategories(vm.classifieds);
+                vm.categories = getCategories(vm.classifieds);
             })
 
 
