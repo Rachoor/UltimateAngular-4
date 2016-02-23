@@ -23,6 +23,12 @@
                     controller: 'ClassifiedsCtrl',
                     controllerAs: 'vm'
                 })
+                .state('classifieds.new', {
+                    url: '/new',
+                    templateUrl: 'components/classifieds/new/classifieds.new.tpl.html',
+                    controller: 'NewClassifiedsCtrl',
+                    controllerAs: 'vm'
+                })
         })
 
 
