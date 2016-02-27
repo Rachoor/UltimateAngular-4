@@ -10,6 +10,7 @@
     function NewClassifiedsCtrl ($scope, $http, classifiedsFactory, $mdSidenav, $timeout, $mdToast, $mdDialog, $state) {
         var vm = this;
         vm.closeSidebar = closeSidebar;
+        vm.sendMessage = sendMessage;
 
         $timeout(function () {
             $mdSidenav('left').open()
@@ -29,8 +30,9 @@
             vm.sidenavOpen = false;
         }
 
-
-
+        function sendMessage () {
+            $scope.$emit('myMessage', 'hey, how are you?');
+        }
 
 
 

@@ -5,10 +5,11 @@
         .module('ngClassifieds')
         .controller('ClassifiedsCtrl', ClassifiedsCtrl)
 
-    ClassifiedsCtrl.$inject = ['$http', 'classifiedsFactory', '$mdSidenav', '$mdToast', '$mdDialog', '$state'];
+    ClassifiedsCtrl.$inject = ['$scope','$http', 'classifiedsFactory', '$mdSidenav', '$mdToast', '$mdDialog', '$state'];
 
-    function ClassifiedsCtrl ($http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog, $state) {
+    function ClassifiedsCtrl ($scope, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog, $state) {
         var vm = this;
+
 
         vm.categories;
         vm.classified;
@@ -23,6 +24,9 @@
         vm.saveEdit = saveEdit;
         vm.showToast = showToast;
 
+        $scope.$on('myMessage', function (event, message) {
+            console.log(message);
+        })
 
         vm.contact = {
             name: "Randy Davis",
