@@ -10,7 +10,7 @@
     function NewClassifiedsCtrl ($scope, $http, classifiedsFactory, $mdSidenav, $timeout, $mdToast, $mdDialog, $state) {
         var vm = this;
         vm.closeSidebar = closeSidebar;
-        vm.sendMessage = sendMessage;
+        vm.saveClassified = saveClassified;
 
         $timeout(function () {
             $mdSidenav('left').open()
@@ -30,11 +30,19 @@
             vm.sidenavOpen = false;
         }
 
-        function sendMessage () {
-            $scope.$emit('myMessage', 'hey, how are you?');
+        function saveClassified (classified) {
+            if (classified) {
+
+                classified.contact = {
+                    name: "Randy Davis",
+                    phone: "(555) 555-5555",
+                    email: "randy@gmail.com"
+                };
+
+                $scope.$emit('newClassified', classified);
+                vm.sidenavOpen = false;
+            }
         }
-
-
 
 
     }

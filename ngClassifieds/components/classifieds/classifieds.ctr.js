@@ -24,9 +24,6 @@
         vm.saveEdit = saveEdit;
         vm.showToast = showToast;
 
-        $scope.$on('myMessage', function (event, message) {
-            console.log(message);
-        })
 
         vm.contact = {
             name: "Randy Davis",
@@ -39,8 +36,13 @@
                 console.log(classifieds);
                 vm.classifieds = classifieds.data;
                 vm.categories = getCategories(vm.classifieds);
-            })
+            });
 
+        $scope.$on('newClassified', function (event, classified) {
+            classified.id = vm.classifieds.length + 1;
+            vm.classifieds.push(classified);
+            showToast('Classified Saved!');
+        });
 
         function openSidebar (){
             $state.go('classifieds.new');
