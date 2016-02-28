@@ -44,6 +44,10 @@
             showToast('Classified Saved!');
         });
 
+        $scope.$on('editSaved', function(event, message) {
+            showToast(message);
+        })
+
         function openSidebar (){
             $state.go('classifieds.new');
         }
@@ -63,9 +67,10 @@
         }
 
         function editClassified (classified) {
-            vm.editing = true;
-            vm.openSidebar();
-            vm.classified = classified;
+            $state.go('classifieds.edit', {
+                id: classified.id,
+                classified: classified
+            });
         }
 
         function saveEdit () {

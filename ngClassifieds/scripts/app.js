@@ -29,6 +29,15 @@
                     controller: 'NewClassifiedsCtrl',
                     controllerAs: 'vm'
                 })
+                .state('classifieds.edit', {
+                    url: '/edit/:id',
+                    templateUrl: 'components/classifieds/edit/classifieds.edit.tpl.html',
+                    controller: 'EditClassifiedsCtrl',
+                    controllerAs: 'vm',
+                    params: {
+                        classified: null
+                    }
+                })
         })
 
 
